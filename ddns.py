@@ -1,19 +1,24 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
+from requests.auth import HTTPBasicAuth
 import requests
 import mycredentials
 
-api_host = 'domains.google.com/nic/update?'
+
 domain = mycredentials.hostname
 username = mycredentials.username
 password = mycredentials.password
+
+url = 'domains.google.com/nic/update?'
 ip = requests.get('http://ipv4.icanhazip.com')
-my_ip = ip.text
+headers = {'User-Agent': 'my_app/0.0.1', 'cache-control':'no-cache'}
+my_ip = ip.text.strip()
+mypayload = {'myip': my_ip}
 
-api_call = "https://{}:{}@{}hostname={}&myip={}".format(username, password, api_host, domain, my_ip)
+api = "https://{}hostname={}".format(url, domain)
 
-print(api_call)
+update = requests.post(api, auth=HTTPBasicAuth(username, password), headers=headers, data=mypayload)
 
-send_update = requests.post(api_call)
-print(send_update)
+print(update.status_code)
+print(update.text)

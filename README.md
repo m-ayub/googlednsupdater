@@ -17,6 +17,13 @@ Domain hosted on domains.google.com
 Enter credentials and domain name in mycredentials.py file  
 Running as a Cron Job  
 
+### Useful links
+
+https://www.geeksforgeeks.org/get-post-requests-using-python/
+https://python-future.org/compatible_idioms.html
+https://gist.github.com/sloria/7001839
+https://www.python.org/dev/peps/pep-0008/
+
 ### Authors
 
 Muhtashim Ayub   
